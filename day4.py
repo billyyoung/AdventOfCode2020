@@ -47,34 +47,25 @@ def is_valid2(values):
     for key, checks in required_fields_to_checks.items():
         if key not in values:
             return False
-
         value = values[key]
         for check in checks:
             if not check(value):
                 return False
-
-        if key == 'hgt':
-            if value[-2:] not in ['cm', 'in']:
-                return False
-            if value[-2:] == 'cm':
-                prefix = value[:-2]
-
     return True
 
 index = 0
 valid = 0
 values = {}
 while index < len(lines):
-
     if lines[index]:
         for s in lines[index].split(" "):
             key, value = s.split(":")
             values[key] = value
     else:
-        print values
         if is_valid2(values):
             valid += 1
         values = {}
+
     index += 1
 
 print valid
