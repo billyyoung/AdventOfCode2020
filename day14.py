@@ -1,6 +1,7 @@
 from collections import defaultdict
 import re
 
+
 with open("day14.input") as infile:
     lines = [l for l in infile.read().split("\n") if l]
 
