@@ -4,9 +4,6 @@ import re
 with open("day14.input") as infile:
     lines = [l for l in infile.read().split("\n") if l]
 
-memory1 = defaultdict(int)
-memory2 = defaultdict(int)
-
 def expand_float(masked_addr):
     if 'X' not in masked_addr:
         return [int(masked_addr, 2)]
@@ -56,6 +53,9 @@ def run_program(bitmask, writes, memory1, memory2):
         new_addrs = expand_float(masked_addr)
         for a in new_addrs:
             memory2[a] = value
+
+memory1 = defaultdict(int)
+memory2 = defaultdict(int)
 
 i = 0
 while i < len(lines):
